@@ -18,10 +18,10 @@ export const IdeaForm = ({
         className="flex flex-col gap-4 items-center"
         onSubmit={async (e) => {
           e.preventDefault();
+          const idea = e.currentTarget.idea.value as string;
+          if (!idea) return;
           setLoading(true);
-          const validation = await onSubmit(
-            e.currentTarget.idea.value as string
-          );
+          const validation = await onSubmit(idea);
           setLoading(false);
           setValidation(validation);
         }}
@@ -30,6 +30,8 @@ export const IdeaForm = ({
           className="textarea textarea-primary max-w-[380px] w-full h-[200px]"
           placeholder="Idea"
           name="idea"
+          required
+          minLength={20}
         ></textarea>
         <button className="btn btn-success">Validate</button>
         {loading ? (
