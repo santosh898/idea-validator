@@ -6,6 +6,7 @@ class ValidatorAssistant extends Assistant {
     super({
       name: "Idea Validation Bot",
       id: "asst_hQigiwp2kHady4YgpMQWdNnt",
+      model: "gpt-4o",
     });
   }
 }
